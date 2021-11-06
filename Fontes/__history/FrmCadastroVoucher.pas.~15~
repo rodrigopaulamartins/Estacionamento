@@ -1,0 +1,115 @@
+unit FrmCadastroVoucher;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, Menus, cxMaskEdit, cxDropDownEdit, cxDBEdit, cxCheckBox,
+  cxTextEdit, StdCtrls, ExtCtrls, ImgList, cxButtons, cxGroupBox, ActnList, DB,
+  ZAbstractRODataset, ZAbstractDataset, ZDataset, JvExControls, JvEnterTab;
+
+type
+  TFCadVouchers = class(TForm)
+    Botoes: TActionList;
+    AcNovo: TAction;
+    AcSalvar: TAction;
+    AcPesquisa: TAction;
+    cxGroupBox1: TcxGroupBox;
+    cxButton4: TcxButton;
+    cxButton1: TcxButton;
+    cxGroupBox2: TcxGroupBox;
+    cxButton3: TcxButton;
+    cxButton2: TcxButton;
+    cxButton5: TcxButton;
+    ImgHabilita: TImageList;
+    Panel1: TPanel;
+    Label1: TLabel;
+    Label5: TLabel;
+    Label2: TLabel;
+    cxDBTextEdit3: TcxDBTextEdit;
+    DVoucher: TDataSource;
+    QVoucher: TZQuery;
+    QVouchercodigo: TIntegerField;
+    QVoucherdescricao: TWideStringField;
+    QVoucherplaca: TWideStringField;
+    QVouchersaldo_atual: TFloatField;
+    QVouchersaldo_inicial: TFloatField;
+    QVouchercodvoucher: TIntegerField;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Label3: TLabel;
+    cxDBTextEdit2: TcxDBTextEdit;
+    cxDBMaskEdit2: TcxDBMaskEdit;
+    Label4: TLabel;
+    cxDBTextEdit4: TcxDBTextEdit;
+    JvEnterAsTab1: TJvEnterAsTab;
+    procedure cxButton4Click(Sender: TObject);
+    procedure AcNovoExecute(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FCadVouchers: TFCadVouchers;
+
+implementation
+
+uses
+  Dados;
+
+{$R *.dfm}
+
+procedure TFCadVouchers.AcNovoExecute(Sender: TObject);
+begin
+   //habila o painel dos edits
+   Panel1.Enabled := True;
+   //abre a tabela TB_CONTABANCARIA
+   QVoucher.Open;
+   //incluisão de um novo registro
+   QVoucher.Append;
+   //Edit da agencia recebe o focus
+   cxDBTextEdit1.SetFocus;
+end;
+
+procedure TFCadVouchers.cxButton4Click(Sender: TObject);
+begin
+   //fecha o formulario
+   Close;
+end;
+
+procedure TFCadVouchers.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+     //verifica se não esta fazendo inclusão ou alteração do registro
+   if DVoucher.State in [dsInsert, dsEdit] then
+   begin
+      if Application.MessageBox('Tem certeza que deseja cancelar a Alteração ou Inclusão?','AVISO', MB_ICONQUESTION+MB_YESNO)= IDYES then
+      begin
+         QVoucher.Cancel;
+         Close;
+      end
+      else
+      begin
+         Abort;
+      end;
+   end;
+end;
+
+procedure TFCadVouchers.FormShow(Sender: TObject);
+begin
+   //desativa os campos edits para não deixar alterar
+   Panel1.Enabled := False;
+end;
+
+end.

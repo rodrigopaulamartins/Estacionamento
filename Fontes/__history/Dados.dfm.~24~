@@ -1,0 +1,14 @@
+object DM: TDM
+  OldCreateOrder = False
+  Height = 150
+  Width = 215
+  object Conexao: TZConnection
+    Protocol = 'mysql-5'
+    HostName = 'localhost'
+    Database = 'garagem'
+    User = 'root'
+    Password = 'rpmt123'
+    Left = 24
+    Top = 64
+  end
+end

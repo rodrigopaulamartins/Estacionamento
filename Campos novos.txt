@@ -1,0 +1,1 @@
+ALTER TABLE TB_MOVIMENTACAO ADD idplano integer(11);

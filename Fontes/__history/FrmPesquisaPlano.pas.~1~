@@ -1,0 +1,52 @@
+unit FrmPesquisaPlano;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters,
+  cxContainer, cxEdit, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinFoggy, dxSkinGlassOceans,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMoneyTwins, dxSkinOffice2007Black, dxSkinOffice2007Blue,
+  dxSkinOffice2007Green, dxSkinOffice2007Pink, dxSkinOffice2007Silver,
+  dxSkinOffice2010Black, dxSkinOffice2010Blue, dxSkinOffice2010Silver,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSharp, dxSkinSilver, dxSkinSpringTime,
+  dxSkinStardust, dxSkinSummer2008, dxSkinsDefaultPainters, dxSkinValentine,
+  dxSkinXmas2008Blue, Menus, cxStyles, dxSkinscxPCPainter, cxCustomData,
+  cxFilter, cxData, cxDataStorage, DB, cxDBData, StdCtrls, Buttons, cxGridLevel,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxClasses,
+  cxGridCustomView, cxGrid, JvExControls, JvEnterTab, ExtCtrls, ImgList,
+  cxButtons, cxGroupBox;
+
+type
+  TFPesquisaPlano = class(TForm)
+    cxGroupBox1: TcxGroupBox;
+    cxButton4: TcxButton;
+    cxButton1: TcxButton;
+    cxGroupBox2: TcxGroupBox;
+    cxButton3: TcxButton;
+    ImgHabilita: TImageList;
+    Panel1: TPanel;
+    JvEnterAsTab1: TJvEnterAsTab;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    ComboBox1: TComboBox;
+    Edit1: TEdit;
+    BitBtn1: TBitBtn;
+    CheckBox1: TCheckBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FPesquisaPlano: TFPesquisaPlano;
+
+implementation
+
+{$R *.dfm}
+
+end.
